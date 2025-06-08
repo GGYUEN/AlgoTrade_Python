@@ -7,7 +7,7 @@ BIAS:https://www.oanda.com/bvi-ft/lab-education/technical_analysis/bias/
 RSI:https://www.oanda.com/bvi-ft/lab-education/technical_analysis/what_is_rsi/
 
 
-@author: ggyuen & Hugh
+@author: GGYUEN
 """
 
 import numpy as np
@@ -69,13 +69,13 @@ def calculate_metrics(stock):
     #standard deviation of strategy returns
     std_strategy_return = stock['Strategy'].std()
     #annualized return
-    annualized_return = (1 + total_strategy_return) ** (252 / len(stock)) - 1
+    #annualized_return = (1 + total_strategy_return) ** (252 / len(stock)) - 1
     # Prepare results
     metrics = {
         'Total Strategy Return': total_strategy_return,
         'Variance of Daily Returns': variance_daily_returns,
         'Standard Deviation of Strategy Returns': std_strategy_return,
-        'Annualized Return': annualized_return,
+        #'Annualized Return': annualized_return,
     }
 
     return metrics
@@ -107,13 +107,11 @@ plt.grid()
 plt.title(stockName+' Analysis')
 plt.show()
 
-#test
-#stock[['RSI','Position']].plot(style='-')
-#stock['BIAS'].plot(secondary_y='BIAS', style='-')
-#plt.show()
-
 #backtest
 stock[['log_return','Strategy']].cumsum().plot()
 stock['Position'].plot(secondary_y='Position', style='--')
 plt.title('Back testing of '+stockName+' using BIAS&RSI')
 plt.show()
+       
+       
+       
